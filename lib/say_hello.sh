@@ -1,7 +1,13 @@
 #ifndef SAY_HELLO
 #define SAY_HELLO
 function say_hello(){
-  echo "hello world"
+  if [ "$1" ];then 
+    local name="$1" 
+  else
+    local name="world" 
+  fi
+
+  echo "hello $name"
 }
 
 #endif
