@@ -1,5 +1,9 @@
 all: _build _lint_lib _test
 
+lint:
+	./tools/build_log.sh lint dot-cli
+	shellcheck -s bash dot-cli
+
 watch:
 	find . -name "*.sh" | entr -c make
 
@@ -14,7 +18,7 @@ _build:
 	chmod 755 dot-cli
 	
 _lint_lib:
-	./tools/build_log.sh lint lib/*.sh
+	./tools/build_log.sh lint lib
 	./tools/lint_lib.sh
 
 _test:
