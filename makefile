@@ -1,4 +1,8 @@
-all: _build _lint _test
+all: _build _lint_lib _test
+
+lint:
+	./tools/build_log.sh lint dot-cli
+	shellcheck -s bash dot-cli
 
 watch:
 	find . -name "*.sh" | entr -c make
@@ -13,9 +17,9 @@ _build:
 	gpp -I ./lib main.sh -o dot-cli 
 	chmod 755 dot-cli
 	
-_lint:
-	./tools/build_log.sh lint
-	shellcheck -s bash dot-cli
+_lint_lib:
+	./tools/build_log.sh lint lib
+	./tools/lint_lib.sh
 
 _test:
 	./tools/build_log.sh test
