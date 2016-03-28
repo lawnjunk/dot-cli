@@ -27,14 +27,10 @@ _build:
 	gpp -I ./lib main.sh -o $(program)
 	chmod 755 $(program)
 	
-_build_test:
-	$(log) build test
-	$(build_test)
-
 _lint_lib:
 	$(log) lint lib
 	$(lint_lib)
 
-_test: _build_test
+_test:
 	$(log) test
-	$(shpec)
+	$(shpec) test/*
