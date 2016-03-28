@@ -27,11 +27,10 @@ before_install:
       sudo apt-get install -y $SHELL
     }
 
-    if ${LINT:-false}; then
-      pkg=$( get_shellcheck 0.3.5-3 0.3.4-3 )
-      sudo dpkg -i $pkg
-    elif ! type $SHELL > /dev/null; then
+    if ! type $SHELL > /dev/null; then
       install_shell
     fi
 
+    pkg=$( get_shellcheck 0.3.5-3 0.3.4-3 )
+    sudo dpkg -i $pkg
     sudo apt-get install -y gpp
