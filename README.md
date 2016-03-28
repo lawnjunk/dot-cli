@@ -1,6 +1,7 @@
-dot
+dot 
 ===
 multi box configuration automation
+[![Build Status](https://travis-ci.org/slugbyte/dot-cli.svg?branch=master)](https://travis-ci.org/slugbyte/dot-cli)  
 
 # Introduction
 When I work on a box that ain't setup ma-way, I feel disoriented and
