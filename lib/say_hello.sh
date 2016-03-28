@@ -8,6 +8,6 @@ function say_hello(){
   fi
 
   echo "hello $name"
+  #echo "$name" > /dev/null
 }
-
 #endif
