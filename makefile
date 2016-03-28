@@ -15,7 +15,7 @@ build:
 	
 shpec:
 	$(log) test
-	$(shpec) test/*
+	bash $(shpec) test/*
 
 lint:
 	$(log) lint $(program_name) 
