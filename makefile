@@ -9,16 +9,13 @@ log := "./tool/build_log.sh"
 lint_lib := "./tool/lint_lib.sh"
 build_test := "./tool/build_test.sh"
 shpec := "./tool/shpec"
-shellcheck := "./tool/shellcheck"
-gpp := "./tool/gpp"
-entr := "./tool/entr"
 
 lint:
 	$(log) lint $(program) 
-	$(shellcheck) -s bash $(program)
+	shellcheck -s bash $(program)
 
 watch:
-	find . -name $(watch_files) | $(entr) -c make
+	find . -name $(watch_files) | entr -c make
 
 clean:
 	$(log) clean
@@ -26,7 +23,7 @@ clean:
 
 _build: 
 	$(log) build
-	$(gpp) -I ./lib main.sh -o $(program)
+	gpp -I ./lib main.sh -o $(program)
 	chmod 755 $(program)
 	
 _lint_lib:
