@@ -10,6 +10,7 @@ lint_lib := "./tool/lint_lib.sh"
 build_test := "./tool/build_test.sh"
 shpec := "./tool/shpec"
 shellcheck := "./tool/shellcheck"
+gpp := "./tool/gpp"
 
 lint:
 	$(log) lint $(program) 
@@ -24,7 +25,7 @@ clean:
 
 _build: 
 	$(log) build
-	gpp -I ./lib main.sh -o $(program)
+	$(gpp) -I ./lib main.sh -o $(program)
 	chmod 755 $(program)
 	
 _lint_lib:
