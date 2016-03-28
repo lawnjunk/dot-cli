@@ -3,8 +3,6 @@ script:
   - |
     make _build
     make _lint_lib
-    pwd
-    tree
     bash tool/shpec test/*
 cache: apt
 before_install:
