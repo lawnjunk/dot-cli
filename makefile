@@ -8,32 +8,30 @@ watch_files := "*.sh"
 log := "./tool/build_log.sh"
 lint_lib := "./tool/lint_lib.sh"
 build_test := "./tool/build_test.sh"
+shpec := "./tool/shpec"
+shellcheck := "./tool/shellcheck"
+gpp := "./tool/gpp"
 
 lint:
 	$(log) lint $(program) 
-	shellcheck -s bash $(program)
+	$(shellcheck) -s bash $(program)
 
 watch:
 	find . -name $(watch_files) | entr -c make
 
 clean:
 	$(log) clean
-	rm -rf shpec
 	rm $(program)
 
 _build: 
 	$(log) build
-	gpp -I ./lib main.sh -o $(program)
+	$(gpp) -I ./lib main.sh -o $(program)
 	chmod 755 $(program)
 	
-_build_test:
-	$(log) build test
-	$(build_test)
-
 _lint_lib:
 	$(log) lint lib
 	$(lint_lib)
 
-_test: _build_test
+_test:
 	$(log) test
-	shpec
+	$(shpec) test/*

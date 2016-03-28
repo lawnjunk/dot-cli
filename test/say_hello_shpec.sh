@@ -1,4 +1,4 @@
-#include "say_hello.sh"
+source  lib/say_hello.sh
 
 describe "say_hello.sh"
   describe "say_hello with no arguments"
