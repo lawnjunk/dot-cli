@@ -1,5 +1,7 @@
 #!/bin/bash
+
 #include "say_hello.sh"
+
 #ifndef MAIN
 #define MAIN
 function main(){

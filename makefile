@@ -1,35 +1,34 @@
-all: _build _lint_lib _test
+all: build lint_lib shpec
 
 #paths 
-program := dot
-watch_files := "*.sh"
+program_name := "dot"
 
 #tools
 log := "./tool/build_log.sh"
 lint_lib := "./tool/lint_lib.sh"
-build_test := "./tool/build_test.sh"
 shpec := "./tool/shpec"
 
-lint:
-	$(log) lint $(program) 
-	shellcheck -s bash $(program)
-
-watch:
-	find . -name $(watch_files) | entr -c make
-
-clean:
-	$(log) clean
-	rm $(program)
-
-_build: 
+build: 
 	$(log) build
-	gpp -I ./lib main.sh -o $(program)
-	chmod 755 $(program)
+	gpp -I ./lib main.sh -o $(program_name)
+	chmod 755 $(program_name)
 	
-_lint_lib:
+shpec:
+	$(log) test
+	bash $(shpec) test/*
+
+lint:
+	$(log) lint $(program_name) 
+	shellcheck -s bash $(program_name)
+
+lint_lib:
 	$(log) lint lib
 	$(lint_lib)
 
-_test:
-	$(log) test
-	$(shpec) test/*
+clean:
+	$(log) clean
+	rm $(program_name)
+
+watch:
+	find . -name "*.sh" | entr -c make
+
