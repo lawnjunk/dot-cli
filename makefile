@@ -5,7 +5,6 @@ program_name := "dot"
 
 #tools
 log := "./tool/build_log.sh"
-lint_lib := "./tool/lint_lib.sh"
 shpec := "./tool/shpec"
 
 build: 
@@ -23,7 +22,7 @@ lint:
 
 lint_lib:
 	$(log) lint lib
-	$(lint_lib)
+	shellcheck -s bash $(shell find lib -name "*.sh")
 
 clean:
 	$(log) clean
