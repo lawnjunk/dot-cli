@@ -1,2 +1,5 @@
-language: c
+language: bash
+before_install:
+	- sudo apt-get update -qq
+	- sudo apt-get install -qq gpp shellcheck shpec
 script: make
