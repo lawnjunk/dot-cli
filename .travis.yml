@@ -1,11 +1,9 @@
 language: bash
-env: 
-  matrix:
-    - LINT=true
-    - SHELL=bash
-matrix:
-  fast_finish: true
-script: make
+script: 
+  - |
+    make _build
+    make _lint_lib
+    bash tool/shpec test/*
 cache: apt
 before_install:
   - |
@@ -21,16 +19,7 @@ before_install:
       done
       )
     }
-    install_shell(){
-      echo "Install $SHELL"
-      sudo apt-get update -qq
-      sudo apt-get install -y $SHELL
-    }
-
-    if ! type $SHELL > /dev/null; then
-      install_shell
-    fi
 
     pkg=$( get_shellcheck 0.3.5-3 0.3.4-3 )
     sudo dpkg -i $pkg
-    sudo apt-get install -y gpp
+    sudo apt-get install -y gpp bash
