@@ -1,9 +1,10 @@
 #!/bin/bash
+#include "say_hello.sh"
 #ifndef MAIN
 #define MAIN
 function main(){
-  true
+  say_hello "$1"
 }
 
-main
+main "$1"
 #endif
