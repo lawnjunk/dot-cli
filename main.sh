@@ -1,6 +1,5 @@
 #!/bin/bash
 
-#include "bashful-doc"
 #include "bashful-files"
 
 #ifndef MAIN
