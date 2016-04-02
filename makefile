@@ -9,7 +9,7 @@ shpec := "./tool/shpec"
 
 build: 
 	$(log) build
-	gpp -I ./lib main.sh -o $(program_name)
+	gpp -I ./lib -I ./vendor main.sh -o $(program_name)
 	chmod 755 $(program_name)
 	
 shpec:

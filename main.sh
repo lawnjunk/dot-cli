@@ -1,11 +1,12 @@
 #!/bin/bash
 
-#include "say_hello.sh"
+#include "bashful-doc"
+#include "bashful-files"
 
 #ifndef MAIN
 #define MAIN
 function main(){
-  say_hello "$1"
+  abspath "$a"
 }
 
 main "$1"
