@@ -1,11 +1,10 @@
 #!/bin/bash
-
-#include "bashful-files"
+#include "gpp-abspath.sh"
 
 #ifndef MAIN
 #define MAIN
 function main(){
-  abspath "$a"
+  abspath "$1"
 }
 
 main "$1"
